@@ -50,7 +50,6 @@ import com.mapswithme.maps.downloader.DownloaderActivity;
 import com.mapswithme.maps.downloader.DownloaderFragment;
 import com.mapswithme.maps.downloader.OnmapDownloader;
 import com.mapswithme.maps.editor.Editor;
-import com.mapswithme.maps.editor.EditorActivity;
 import com.mapswithme.maps.editor.EditorHostFragment;
 import com.mapswithme.maps.editor.FeatureCategoryActivity;
 import com.mapswithme.maps.editor.ReportFragment;
@@ -354,10 +353,21 @@ public class MwmActivity extends BaseMwmFragmentActivity
   {
     // TODO(yunikkk) think about refactoring. It probably should be called in editor.
     Editor.nativeStartEdit();
-    if (mIsTabletLayout)
-      replaceFragment(EditorHostFragment.class, null, null);
-    else
-      EditorActivity.start(this);
+    //if (mIsTabletLayout)
+    EditorHostFragment editorHostFragment = (EditorHostFragment) getSupportFragmentManager()
+            .findFragmentByTag(EditorHostFragment.class.getName());
+    if (editorHostFragment == null)
+    {
+      editorHostFragment = (EditorHostFragment) EditorHostFragment.instantiate(this, EditorHostFragment.class.getName(), null);
+      getSupportFragmentManager()
+              .beginTransaction()
+              .replace(R.id.common_fragment_container, editorHostFragment, EditorHostFragment.class.getName())
+              .addToBackStack(EditorHostFragment.class.getName())
+              .commit();
+    }
+    //replaceFragment(EditorHostFragment.class, null, null);
+    //else
+    //  EditorActivity.start(this);
   }
 
   private void shareMyLocation()
@@ -1029,6 +1039,11 @@ public class MwmActivity extends BaseMwmFragmentActivity
   @Override
   public void onBackPressed()
   {
+    if(getSupportFragmentManager().getBackStackEntryCount() > 0)
+    {
+      getSupportFragmentManager().popBackStack();
+      return;
+    }
     if (getCurrentMenu().close(true))
     {
       mFadeView.fadeOut();
@@ -2228,3 +2243,4 @@ public class MwmActivity extends BaseMwmFragmentActivity
     }
   }
 }
+

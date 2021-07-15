@@ -167,14 +167,15 @@ public class EditorHostFragment extends BaseMwmToolbarFragment
   {
     switch (mMode)
     {
-    case OPENING_HOURS:
-    case STREET:
-    case CUISINE:
-    case LANGUAGE:
-      editMapObject();
-      break;
-    default:
-      Utils.navigateToParent(getActivity());
+      case OPENING_HOURS:
+      case STREET:
+      case CUISINE:
+      case LANGUAGE:
+        editMapObject();
+        break;
+      default:
+        getActivity().getSupportFragmentManager().popBackStack();
+        //Utils.navigateToParent(getActivity());
     }
     return true;
   }
@@ -411,3 +412,4 @@ public class EditorHostFragment extends BaseMwmToolbarFragment
     editMapObject(true /* focusToLastName */);
   }
 }
+
