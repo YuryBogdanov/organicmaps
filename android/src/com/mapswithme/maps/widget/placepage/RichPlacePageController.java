@@ -63,7 +63,7 @@ public class RichPlacePageController implements PlacePageController, LocationLis
     @Override
     public void onSheetDirectionIconChange()
     {
-      PlacePageUtils.setPullDrawable(mPlacePageBehavior, mPlacePage, R.id.pull_icon);
+      PlacePageUtils.setPullDrawable(mPlacePageBehavior, mPlacePage, R.id.pp_pull_icon);
     }
 
     @Override

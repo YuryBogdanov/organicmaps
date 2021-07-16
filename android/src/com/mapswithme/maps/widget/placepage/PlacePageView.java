@@ -278,14 +278,14 @@ public class PlacePageView extends NestedScrollViewClickFixed
   {
     super.onFinishInflate();
     mPreview = findViewById(R.id.pp__preview);
-    mTvTitle = mPreview.findViewById(R.id.tv__title);
+    mTvTitle = mPreview.findViewById(R.id.pp_tv_title);
     mTvSecondaryTitle = mPreview.findViewById(R.id.tv__secondary_title);
     mToolbar = findViewById(R.id.toolbar);
-    mTvSubtitle = mPreview.findViewById(R.id.tv__subtitle);
+    mTvSubtitle = mPreview.findViewById(R.id.pp_tv_subtitle);
 
     View directionFrame = mPreview.findViewById(R.id.direction_frame);
-    mTvDistance = mPreview.findViewById(R.id.tv__straight_distance);
-    mAvDirection = mPreview.findViewById(R.id.av__direction);
+    mTvDistance = mPreview.findViewById(R.id.pp_tv_straight_distance);
+    mAvDirection = mPreview.findViewById(R.id.pp_av_direction);
     directionFrame.setOnClickListener(this);
 
     mTvAddress = mPreview.findViewById(R.id.tv__address);
@@ -339,7 +339,7 @@ public class PlacePageView extends NestedScrollViewClickFixed
     mTvBookmarkNote = mBookmarkFrame.findViewById(R.id.tv__bookmark_notes);
     initEditMapObjectBtn();
 
-    mDownloaderIcon = new DownloaderStatusIcon(mPreview.findViewById(R.id.downloader_status_frame));
+    mDownloaderIcon = new DownloaderStatusIcon(mPreview.findViewById(R.id.pp_downloader_status_frame));
 
     mDownloaderInfo = mPreview.findViewById(R.id.tv__downloader_details);
 

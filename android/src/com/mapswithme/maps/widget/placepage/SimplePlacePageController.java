@@ -56,7 +56,7 @@ public class SimplePlacePageController implements PlacePageController
           if (UiUtils.isLandscape(mApplication))
             return;
 
-          PlacePageUtils.setPullDrawable(mSheetBehavior, mSheet, R.id.pull_icon);
+          PlacePageUtils.setPullDrawable(mSheetBehavior, mSheet, R.id.pp_pull_icon);
         }
 
         @Override
